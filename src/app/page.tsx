@@ -1,7 +1,11 @@
+import { useTranslations } from 'next-intl'
+
 export default function Home() {
+  const t = useTranslations('')
+
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div>
+      <h1>{t('hello-world')}</h1>
+    </div>
   )
 }

@@ -1,13 +1,16 @@
+import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface Properties {
   children: React.ReactNode;
-}>) {
+};
+
+export default async function RootLayout({children}: Properties) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="fr">
+      <body cz-shortcut-listen="true">
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </body>
     </html>
   );
 }
