@@ -1,15 +1,19 @@
 import { NextIntlClientProvider } from "next-intl";
+import Header from "@/components/organisms/header";
 import "./globals.css";
 
 interface Properties {
   children: React.ReactNode;
-};
+}
 
-export default async function RootLayout({children}: Properties) {
+export default async function RootLayout({ children }: Properties) {
   return (
     <html lang="fr">
       <body cz-shortcut-listen="true">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
