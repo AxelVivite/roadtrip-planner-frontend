@@ -13,11 +13,10 @@
   "iconLibrary": "lucide",
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils",
     "atoms": "@/components/atoms",
     "molecules": "@/components/molecules",
     "organisms": "@/components/organisms",
-    "lib": "@/utils",
+    "utils": "@/utils",
     "hooks": "@/hooks"
   },
   "registries": {}
