@@ -27,9 +27,9 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
-      "src/i18n/**"
+      "src/i18n/**",
     ],
   },
 ];
 
-export default eslintConfig
+export default eslintConfig;
