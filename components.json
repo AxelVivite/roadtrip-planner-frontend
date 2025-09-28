@@ -14,8 +14,10 @@
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
+    "atoms": "@/components/atoms",
+    "molecules": "@/components/molecules",
+    "organisms": "@/components/organisms",
+    "lib": "@/utils",
     "hooks": "@/hooks"
   },
   "registries": {}
