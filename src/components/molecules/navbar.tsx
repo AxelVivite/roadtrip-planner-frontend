@@ -9,14 +9,14 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@atoms/navigation-menu";
+} from "@atoms/shadcn/navigation-menu";
 import { NavbarLink } from "@config/navbar-links";
 
-interface Props {
+interface Properties {
   navbarLinks: NavbarLink[];
 }
 
-export default function Navbar({ navbarLinks }: Props) {
+export default function Navbar({ navbarLinks }: Properties) {
   const t = useTranslations("");
 
   return (

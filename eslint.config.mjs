@@ -28,6 +28,7 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
       "src/i18n/**",
+      "src/components/atoms/shadcn/**",
     ],
   },
 ];

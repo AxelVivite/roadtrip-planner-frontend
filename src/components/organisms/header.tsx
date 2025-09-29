@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { IconRoute } from "@tabler/icons-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@atoms/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@atoms/shadcn/avatar";
 import Navbar from "@molecules/navbar";
 import BurgerMenu from "@molecules/burger-menu";
 import navbarLinks from "@config/navbar-links";

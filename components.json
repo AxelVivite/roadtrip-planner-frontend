@@ -12,9 +12,9 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/components/molecules",
+    "components": "@/components/molecules/shadcn",
     "utils": "@/lib/utils",
-    "ui": "@/components/atoms",
+    "ui": "@/components/atoms/shadcn",
     "lib": "@/utils",
     "hooks": "@/hooks"
   },

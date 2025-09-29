@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { IconMenu2 } from "@tabler/icons-react";
 
-import { Popover, PopoverContent, PopoverTrigger } from "@atoms/popover";
-import { Button } from "@atoms/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@atoms/shadcn/popover";
+import { Button } from "@atoms/shadcn/button";
 import { NavbarLink } from "@config/navbar-links";
 
-interface Props {
+interface Properties {
   navbarLinks: NavbarLink[];
 }
 
-export default function BurgerMenu({ navbarLinks }: Props) {
+export default function BurgerMenu({ navbarLinks }: Properties) {
   const t = useTranslations("");
 
   return (
