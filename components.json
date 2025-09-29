@@ -12,11 +12,10 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/components",
-    "atoms": "@/components/atoms",
-    "molecules": "@/components/molecules",
-    "organisms": "@/components/organisms",
-    "utils": "@/utils",
+    "components": "@/components/molecules",
+    "utils": "@/lib/utils",
+    "ui": "@/components/atoms",
+    "lib": "@/utils",
     "hooks": "@/hooks"
   },
   "registries": {}
