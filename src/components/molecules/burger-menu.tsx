@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { IconMenu2 } from "@tabler/icons-react";
+
 import { Popover, PopoverContent, PopoverTrigger } from "@atoms/popover";
 import { Button } from "@atoms/button";
-import { IconMenu2 } from "@tabler/icons-react";
 import { NavbarLink } from "@config/navbar-links";
-import { useTranslations } from "next-intl";
 
 interface Props {
   navbarLinks: NavbarLink[];

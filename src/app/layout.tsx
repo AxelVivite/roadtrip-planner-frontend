@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
-import Header from "@/components/organisms/header";
+
+import Header from "@organisms/header";
 import "./globals.css";
 
 interface Properties {
