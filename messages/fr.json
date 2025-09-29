@@ -1,3 +1,18 @@
 {
-  "hello-world": "Bonjour tout le monde!"
+  "hello-world": "Bonjour tout le monde!",
+  "website-name": "Roadtrip planner",
+  "molecules": {
+    "burger-menu": {
+      "open-main-menu": "Ouvrir le menu principal"
+    },
+    "navbar": {
+      "global": "Globale"
+    }
+  },
+  "config": {
+    "navbar": {
+      "list-countries": "Liste des pays",
+      "roadtrip-planning": "Planification du roadtrip"
+    }
+  }
 }
