@@ -1,5 +1,4 @@
 {
-  "hello-world": "Bonjour tout le monde!",
   "website-name": "Roadtrip planner",
   "molecules": {
     "burger-menu": {
@@ -9,10 +8,38 @@
       "global": "Globale"
     }
   },
+  "organisms": {
+    "forms": {
+      "login": {
+        "email": "E-mail",
+        "email-placeholder": "adresse.mail@example.com",
+        "password": "Mot de passe",
+        "password-placeholder": "•••••••",
+        "submit": "Se connecter"
+      }
+    }
+  },
+  "pages": {
+    "login": {
+      "sign-in-to-your-account": "Connectez vous à votre compte"
+    }
+  },
   "config": {
     "navbar": {
       "list-countries": "Liste des pays",
       "roadtrip-planning": "Planification du roadtrip"
+    }
+  },
+  "errors": {
+    "zod": {
+      "emailRequired": "L'email est requis.",
+      "emailInvalid": "Veuillez saisir une adresse email valide.",
+      "passwordMin": "Le mot de passe doit contenir au moins 8 caractères.",
+      "passwordMax": "Le mot de passe doit contenir moins de 64 caractères.",
+      "passwordUpper": "Le mot de passe doit contenir au moins une lettre majuscule.",
+      "passwordLower": "Le mot de passe doit contenir au moins une lettre minuscule.",
+      "passwordNumber": "Le mot de passe doit contenir au moins un chiffre.",
+      "passwordSpecial": "Le mot de passe doit contenir au moins un caractère spécial."
     }
   }
 }

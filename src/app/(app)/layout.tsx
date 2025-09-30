@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 
+import Header from "@organisms/header";
 import "@/app/globals.css";
 
 interface Properties {
@@ -8,9 +9,12 @@ interface Properties {
 
 export default async function RootLayout({ children }: Properties) {
   return (
-    <html lang="fr" className="h-full">
-      <body cz-shortcut-listen="true" className="h-full">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+    <html lang="fr">
+      <body cz-shortcut-listen="true">
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
