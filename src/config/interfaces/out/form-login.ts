@@ -1,4 +1,4 @@
 export default interface FormLogin {
-  email: string;
+  username: string;
   password: string;
 }

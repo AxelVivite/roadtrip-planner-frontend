@@ -15,7 +15,7 @@ export default function FormLogin() {
   const tErrorsZod = useTranslations("errors.zod");
 
   const formSchema = z.object({
-    email: z
+    username: z
       .string()
       .min(1, { message: tErrorsZod("emailRequired") })
       .pipe(z.email({ message: tErrorsZod("emailInvalid") })),
@@ -32,20 +32,32 @@ export default function FormLogin() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then(() => {})
+      .catch(() => {});
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8" noValidate>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8"
+        noValidate
+      >
         <FormField<FormLoginOut>
-          name="email"
+          name="username"
           label={tLogin("email")}
           formControl={form.control}
           input={{
