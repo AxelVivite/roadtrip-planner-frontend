@@ -14,13 +14,14 @@ interface Properties {
 }
 
 export default function BurgerMenu({ navbarLinks }: Properties) {
-  const t = useTranslations("");
+  const tBurgerMenu = useTranslations("molecules.menu.burger-menu");
+  const tNavbar = useTranslations("config.navbar");
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="ghost" className="flex md:hidden items-center">
-          <span className="sr-only">{t("molecules.burger-menu.open-main-menu")}</span>
+          <span className="sr-only">{tBurgerMenu("open-main-menu")}</span>
           <IconMenu2 aria-hidden="true" />
         </Button>
       </PopoverTrigger>
@@ -28,7 +29,7 @@ export default function BurgerMenu({ navbarLinks }: Properties) {
         <div className="flex flex-col gap-2">
           {navbarLinks.map((link) => (
             <Button asChild size="lg" variant="outline" key={link.id}>
-              <Link href={link.href}>{t(`config.navbar.${link.id}`)}</Link>
+              <Link href={link.href}>{tNavbar(link.id)}</Link>
             </Button>
           ))}
         </div>

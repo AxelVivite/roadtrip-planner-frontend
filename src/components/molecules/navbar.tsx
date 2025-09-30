@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import {
@@ -17,21 +18,28 @@ interface Properties {
 }
 
 export default function Navbar({ navbarLinks }: Properties) {
+  const pathname = usePathname();
   const t = useTranslations("");
 
   return (
     <NavigationMenu aria-label={t("molecules.navbar.global")}>
       <NavigationMenuList>
-        {navbarLinks.map((link) => (
-          <NavigationMenuItem key={link.id}>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <Link href={link.href}>{t(`config.navbar.${link.id}`)}</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
+        {navbarLinks.map((link) => {
+          const isActive = link.href === pathname;
+          return (
+            <NavigationMenuItem key={link.id}>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle()}
+                active={isActive}
+              >
+                <Link href={link.href} className={isActive ? "bg-muted" : ""}>
+                  {t(`config.navbar.${link.id}`)}
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          );
+        })}
       </NavigationMenuList>
     </NavigationMenu>
   );

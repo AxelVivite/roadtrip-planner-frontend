@@ -1,8 +1,13 @@
 {
   "website-name": "Roadtrip planner",
   "molecules": {
-    "burger-menu": {
-      "open-main-menu": "Ouvrir le menu principal"
+    "menu": {
+      "avatar-menu": {
+        "logout": "Déconnexion"
+      },
+      "burger-menu": {
+        "open-main-menu": "Ouvrir le menu principal"
+      }
     },
     "navbar": {
       "global": "Globale"

@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { IconRoute } from "@tabler/icons-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@atoms/shadcn/avatar";
 import Navbar from "@molecules/navbar";
-import BurgerMenu from "@molecules/burger-menu";
+import AvatarMenu from "@molecules/menu/avatar-menu";
+import BurgerMenu from "@molecules/menu/burger-menu";
 import navbarLinks from "@config/navbar-links";
 
 export default function Header() {
@@ -24,11 +24,10 @@ export default function Header() {
           <div className="hidden md:flex ml-10 items-baseline space-x-4">
             <Navbar navbarLinks={navbarLinks} />
           </div>
-          <Avatar className="hidden md:block">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <BurgerMenu navbarLinks={navbarLinks} />
+          <div className="flex gap-4">
+            <BurgerMenu navbarLinks={navbarLinks} />
+            <AvatarMenu />
+          </div>
         </div>
       </div>
     </header>
