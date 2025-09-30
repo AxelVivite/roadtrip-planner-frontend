@@ -5,14 +5,16 @@ import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { toast } from "sonner";
 
 import { Button } from "@atoms/shadcn/button";
 import { Form } from "@atoms/shadcn/form";
 import FormField from "@molecules/form-field";
 import FormLoginOut from "@config/interfaces/out/form-login";
 import Login from "@config/interfaces/in/login";
+import FetchError from "@config/interfaces/fetch-error";
 import useAuth from "@utils/auth/use-auth";
-import useFetchJSON from "@utils/fetchJSON";
+import useFetchJSON from "@utils/fetch-json";
 
 export default function FormLogin() {
   const router = useRouter();
@@ -53,7 +55,13 @@ export default function FormLogin() {
         setAuth(data);
         router.push("/");
       })
-      .catch(() => {});
+      .catch((error: FetchError) => {
+        if (error.status === 401) {
+          toast.error(tLogin(`401.title`), {
+            description: tLogin(`401.description`),
+          });
+        }
+      });
   }
 
   return (

@@ -15,7 +15,11 @@
         "email-placeholder": "adresse.mail@example.com",
         "password": "Mot de passe",
         "password-placeholder": "•••••••",
-        "submit": "Se connecter"
+        "submit": "Se connecter",
+        "401": {
+          "title": "Oops ! Connexion impossible",
+          "description": "On dirait que votre email ou mot de passe est incorrect. Essayez de nouveau, vous allez y arriver !"
+        }
       }
     }
   },

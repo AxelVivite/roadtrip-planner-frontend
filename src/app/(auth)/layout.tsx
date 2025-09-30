@@ -1,7 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 
 import { Toaster } from "@atoms/shadcn/sonner";
-import Header from "@organisms/header";
 import AuthProvider from "@utils/auth/auth-context";
 import "@/app/globals.css";
 
@@ -11,11 +10,10 @@ interface Properties {
 
 export default async function RootLayout({ children }: Properties) {
   return (
-    <html lang="fr">
-      <body cz-shortcut-listen="true">
+    <html lang="fr" className="h-full">
+      <body cz-shortcut-listen="true" className="h-full">
         <NextIntlClientProvider>
           <AuthProvider>
-            <Header />
             {children}
             <Toaster position="top-center" />
           </AuthProvider>

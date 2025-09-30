@@ -1,3 +1,4 @@
+import FetchError from "@config/interfaces/fetch-error";
 import useAuth from "@utils/auth/use-auth";
 
 type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
@@ -31,8 +32,15 @@ export const useFetchJSON = <RequestType, ResponseType>() => {
     });
 
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.message || `Fetch error: ${res.status}`);
+      const errData = (await res
+        .json()
+        .catch(() => ({}))) as Partial<FetchError>;
+      const fetchError: FetchError = {
+        status: res.status,
+        statusText: res.statusText,
+        message: errData.message || `Fetch error: ${res.status}`,
+      };
+      throw fetchError;
     }
 
     const data: ResponseType = await res.json();
