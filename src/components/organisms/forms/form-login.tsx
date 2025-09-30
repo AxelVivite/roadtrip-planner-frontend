@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -8,9 +9,15 @@ import { z } from "zod";
 import { Button } from "@atoms/shadcn/button";
 import { Form } from "@atoms/shadcn/form";
 import FormField from "@molecules/form-field";
-import FormLoginOut from "@/config/interfaces/out/form-login";
+import FormLoginOut from "@config/interfaces/out/form-login";
+import Login from "@config/interfaces/in/login";
+import useAuth from "@utils/auth/use-auth";
+import useFetchJSON from "@utils/fetchJSON";
 
 export default function FormLogin() {
+  const router = useRouter();
+  const { setAuth } = useAuth();
+  const fetchJSON = useFetchJSON<FormLoginOut, Login>();
   const tLogin = useTranslations("organisms.forms.login");
   const tErrorsZod = useTranslations("errors.zod");
 
@@ -38,14 +45,14 @@ export default function FormLogin() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
+    fetchJSON({
+      url: `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+      options: { method: "POST", body: values },
     })
-      .then(() => {})
+      .then((data) => {
+        setAuth(data);
+        router.push("/");
+      })
       .catch(() => {});
   }
 
@@ -63,6 +70,7 @@ export default function FormLogin() {
           input={{
             type: "email",
             placeholder: tLogin("email-placeholder"),
+            autoComplete: "email",
           }}
         />
         <FormField<FormLoginOut>
@@ -72,6 +80,7 @@ export default function FormLogin() {
           input={{
             type: "password",
             placeholder: tLogin("password-placeholder"),
+            autoComplete: "current-password",
           }}
         />
         <Button type="submit" className="w-full">
