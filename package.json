@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start -p 3001",
     "lint": "eslint",
-    "lint-fix": "eslint --fix"
+    "lint-fix": "eslint --fix",
+    "tests": "playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.55.1",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -43,6 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "autoprefixer": "^10.4.21",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "eslint-plugin-unicorn": "^61.0.2",

@@ -40,7 +40,7 @@ export default function AvatarMenu({}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="rounded-full">
-        <Avatar className="cursor-pointer">
+        <Avatar className="cursor-pointer" id="avatar-menu">
           <AvatarFallback>{username?.charAt(0)}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

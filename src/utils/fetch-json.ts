@@ -13,10 +13,10 @@ interface Properties<RequestType> {
   options?: Options<RequestType>;
 }
 
-export const useFetchJSON = <RequestType, ResponseType>() => {
+export const usefetchJson = <RequestType, ResponseType>() => {
   const { token } = useAuth();
 
-  const fetchJSON = async ({
+  const fetchJson = async ({
     url,
     options,
   }: Properties<RequestType>): Promise<ResponseType> => {
@@ -47,7 +47,7 @@ export const useFetchJSON = <RequestType, ResponseType>() => {
     return data;
   };
 
-  return fetchJSON;
+  return fetchJson;
 };
 
-export default useFetchJSON;
+export default usefetchJson;

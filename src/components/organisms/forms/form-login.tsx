@@ -14,12 +14,12 @@ import FormLoginOut from "@config/interfaces/out/form-login";
 import Login from "@config/interfaces/in/login";
 import FetchError from "@config/interfaces/fetch-error";
 import useAuth from "@utils/hook/use-auth";
-import useFetchJSON from "@utils/fetch-json";
+import usefetchJson from "@utils/fetch-json";
 
 export default function FormLogin() {
   const router = useRouter();
   const { setAuth } = useAuth();
-  const fetchJSON = useFetchJSON<FormLoginOut, Login>();
+  const fetchJson = usefetchJson<FormLoginOut, Login>();
   const tLogin = useTranslations("organisms.forms.login");
   const tErrorsZod = useTranslations("errors.zod");
 
@@ -47,7 +47,7 @@ export default function FormLogin() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    fetchJSON({
+    fetchJson({
       url: `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
       options: { method: "POST", body: values },
     })
