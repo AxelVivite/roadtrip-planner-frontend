@@ -1,5 +1,5 @@
 import FetchError from "@config/interfaces/fetch-error";
-import useAuth from "@utils/auth/use-auth";
+import useAuth from "@utils/hook/use-auth";
 
 type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 

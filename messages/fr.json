@@ -3,7 +3,9 @@
   "molecules": {
     "menu": {
       "avatar-menu": {
-        "logout": "Déconnexion"
+        "logout": "Déconnexion",
+        "swap-dark-mode": "Théme sombre",
+        "swap-light-mode": "Théme clair"
       },
       "burger-menu": {
         "open-main-menu": "Ouvrir le menu principal"

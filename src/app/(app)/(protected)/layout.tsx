@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import useAuth from "@utils/auth/use-auth";
+
+import useAuth from "@utils/hook/use-auth";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { token, isLoading } = useAuth();

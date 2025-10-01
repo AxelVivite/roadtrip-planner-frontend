@@ -14,20 +14,18 @@ export default function Header() {
   const t = useTranslations("");
 
   return (
-    <header className="shadow-md">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/">
-            <span className="sr-only">{t("website-name")}</span>
-            <IconRoute aria-hidden="true" className="md:w-8 md:h-8" />
-          </Link>
-          <div className="hidden md:flex ml-10 items-baseline space-x-4">
-            <Navbar navbarLinks={navbarLinks} />
-          </div>
-          <div className="flex gap-4">
-            <BurgerMenu navbarLinks={navbarLinks} />
-            <AvatarMenu />
-          </div>
+    <header className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border-t-0 border-2 border-secondary rounded-b-xl">
+      <div className="flex h-16 items-center justify-between">
+        <Link href="/">
+          <span className="sr-only">{t("website-name")}</span>
+          <IconRoute aria-hidden="true" className="md:w-8 md:h-8" />
+        </Link>
+        <div className="hidden md:flex ml-10 items-baseline space-x-4">
+          <Navbar navbarLinks={navbarLinks} />
+        </div>
+        <div className="flex gap-4">
+          <BurgerMenu navbarLinks={navbarLinks} />
+          <AvatarMenu />
         </div>
       </div>
     </header>

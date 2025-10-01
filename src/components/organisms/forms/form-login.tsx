@@ -13,7 +13,7 @@ import FormField from "@molecules/form-field";
 import FormLoginOut from "@config/interfaces/out/form-login";
 import Login from "@config/interfaces/in/login";
 import FetchError from "@config/interfaces/fetch-error";
-import useAuth from "@utils/auth/use-auth";
+import useAuth from "@utils/hook/use-auth";
 import useFetchJSON from "@utils/fetch-json";
 
 export default function FormLogin() {
