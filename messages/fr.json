@@ -39,6 +39,9 @@
           "description": "On dirait que votre email ou mot de passe est incorrect. Essayez de nouveau, vous allez y arriver !"
         }
       }
+    },
+    "card-country": {
+      "add-to-roadtrip": "Roadtrip"
     }
   },
   "pages": {
@@ -46,7 +49,6 @@
       "sign-in-to-your-account": "Connectez vous à votre compte"
     },
     "countries": {
-      "add-to-roadtrip": "Roadtrip",
       "400": {
         "title": "Paramètres invalides",
         "description": "Les paramètres sont invalides, manquants ou ambigus."
@@ -58,6 +60,27 @@
       "500": {
         "title": "Échec de la récupération",
         "description": "Impossible de récupérer les informations du pays."
+      }
+    },
+    "detailed": {
+      "add-to-roadtrip": "Roadtrip",
+      "capital": "{count, plural, =0 {Capitale} one {Capitale} other {Capitales}}",
+      "region": "Région",
+      "continent": "{count, plural, =0 {Continent} one {Continent} other {Continents}}",
+      "language": "{count, plural, =0 {Langage} one {Langage} other {Langages}}",
+      "currency": "{count, plural, =0 {Currency} one {Currency} other {Currencies}}",
+      "neighbors": "{count, plural, =0 {Pays voisin} one {Pays voisin} other {Pays voisins}}",
+      "400": {
+        "title": "Paramètres invalides",
+        "description": "Le ou les paramètres sont invalides, manquants ou ambigus."
+      },
+      "404": {
+        "title": "Pays introuvable",
+        "description": "Aucun pays correspondant n'a été trouvé."
+      },
+      "500": {
+        "title": "Échec de la récupération",
+        "description": "Impossible de récupérer les informations du ou des pays par code."
       }
     }
   },
