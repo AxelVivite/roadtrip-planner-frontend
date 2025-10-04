@@ -11,7 +11,7 @@ interface Properties {
 }
 
 export default function CardCountry({ country }: Properties) {
-  const tCardCountry = useTranslations("organisms.card-country");
+  const tCardCountry = useTranslations("organisms.card.country");
 
   return (
     <Link href={`/detailed/${country.cca3}`} key={country.cca3}>

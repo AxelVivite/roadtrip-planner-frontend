@@ -1,0 +1,84 @@
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { IconPlus } from "@tabler/icons-react";
+
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@atoms/shadcn/card";
+import { Button } from "@atoms/shadcn/button";
+import { Country } from "@config/interfaces/in/countries";
+
+interface Properties {
+  country: Country;
+}
+
+export default function CardCountryDetailed({ country }: Properties) {
+  const tDetailed = useTranslations("organisms.card.country-detailed");
+
+  return (
+    <div className="flex flex-col sm:flex-row gap-4">
+      <Card>
+        <CardHeader className="h-full">
+          <Image
+            className="m-auto"
+            src={country.flags.svg}
+            alt={`Drapeau ${country.name.common}`}
+            width={192}
+            height={192}
+          />
+        </CardHeader>
+      </Card>
+      <Card className="grow relative">
+        <CardHeader>
+          <CardTitle>
+            <strong>{country.name.common}</strong>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul>
+            <li>
+              <strong>{`${tDetailed("capital", {
+                count: country.capital.length,
+              })} : `}</strong>
+              {country.capital.join(", ")}
+            </li>
+            <li>
+              <strong>{`${tDetailed("region")} : `}</strong>
+              {country.region}
+            </li>
+            <li>
+              <strong>{`${tDetailed("continent", {
+                count: country.continents.length,
+              })} : `}</strong>
+              {country.continents.join(", ")}
+            </li>
+            <li>
+              <strong>{`${tDetailed("language", {
+                count: Object.values(country.languages).length,
+              })} : `}</strong>
+              {Object.values(country.languages).join(", ")}
+            </li>
+            <li>
+              <strong>{`${tDetailed("currency", {
+                count: Object.values(country.currencies).length,
+              })} : `}</strong>
+              {Object.values(country.currencies)
+                .map((currency) => `${currency.name} (${currency.symbol})`)
+                .join(", ")}
+            </li>
+          </ul>
+        </CardContent>
+        <CardFooter className="sm:p-0">
+          <Button className="sm:absolute top-0 right-0 sm:m-6">
+            <IconPlus />
+            {tDetailed("add-to-roadtrip")}
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
+  );
+}

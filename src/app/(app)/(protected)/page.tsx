@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import CompletePagination from "@molecules/complete-pagination";
 import SearchBar from "@molecules/search-bar";
-import CardCountry from "@organisms/card-country";
+import CardCountry from "@organisms/cards/card-country";
 import pageSizeOptions from "@config/page-size-options";
 import FetchError from "@config/interfaces/fetch-error";
 import Countries, { Country } from "@config/interfaces/in/countries";
@@ -73,7 +73,7 @@ export default function Home() {
         ></SearchBar>
         <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {data.map((country) => (
-            <CardCountry country={country} />
+            <CardCountry country={country} key={country.cca3} />
           ))}
         </div>
       </div>
