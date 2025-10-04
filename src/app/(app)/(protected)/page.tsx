@@ -15,7 +15,7 @@ import pageSizeOptions from "@config/page-size-options";
 import FetchError from "@config/interfaces/fetch-error";
 import Countries, { Country } from "@config/interfaces/in/countries";
 import { buildUrl } from "@utils/build-url";
-import usefetchJson from "@utils/fetch-json";
+import useFetchJson from "@utils/fetch-json";
 
 type PageParams = {
   page: string;
@@ -24,7 +24,7 @@ type PageParams = {
 };
 
 export default function Home() {
-  const fetchJson = usefetchJson<Countries>();
+  const fetchJson = useFetchJson<Countries>();
   const tCountries = useTranslations("pages.countries");
   const params = useParams<PageParams>();
   const [page, setPage] = useState<number>(
@@ -52,7 +52,6 @@ export default function Home() {
       .then((response) => {
         setData(response.data);
         setTotalPages(response.totalPages);
-        console.log(response.data);
       })
       .catch((error: FetchError) => {
         if (
