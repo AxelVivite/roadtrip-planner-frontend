@@ -19,7 +19,7 @@ import usefetchJson from "@utils/fetch-json";
 export default function FormLogin() {
   const router = useRouter();
   const { setAuth } = useAuth();
-  const fetchJson = usefetchJson<FormLoginOut, Login>();
+  const fetchJson = usefetchJson<Login, FormLoginOut>();
   const tLogin = useTranslations("organisms.forms.login");
   const tErrorsZod = useTranslations("errors.zod");
 

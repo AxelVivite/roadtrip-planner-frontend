@@ -6,16 +6,16 @@ import { useRouter } from "next/navigation";
 import useAuth from "@utils/hook/use-auth";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { token, isLoading } = useAuth();
+  const { accessToken, isLoading } = useAuth();
   const router = useRouter();
 
   React.useEffect(() => {
-    if (!isLoading && !token) {
+    if (!isLoading && !accessToken) {
       router.replace("/login");
     }
-  }, [token, isLoading, router]);
+  }, [accessToken, isLoading, router]);
 
-  if (!token) {
+  if (!accessToken) {
     return null;
   }
 

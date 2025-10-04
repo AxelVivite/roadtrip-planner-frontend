@@ -5,9 +5,9 @@ import React from "react";
 import Login from "@config/interfaces/in/login";
 
 interface AuthContextType {
-  token?: string;
+  accessToken?: string;
   username?: string;
-  setAuth: ({ token, username }: Login) => void;
+  setAuth: ({ accessToken, username }: Login) => void;
   logout: () => void;
   isLoading: boolean;
 }
@@ -21,22 +21,22 @@ interface Properties {
 }
 
 const AuthProvider = ({ children }: Properties) => {
-  const [token, setToken] = React.useState<string>();
+  const [accessToken, setAccessToken] = React.useState<string>();
   const [username, setUsername] = React.useState<string>();
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const savedToken = localStorage.getItem("token");
+    const savedToken = localStorage.getItem("accessToken");
     const savedUser = localStorage.getItem("username");
-    if (savedToken) setToken(savedToken);
+    if (savedToken) setAccessToken(savedToken);
     if (savedUser) setUsername(savedUser);
     setIsLoading(false);
   }, []);
 
-  const setAuth = ({ token, username }: Login) => {
-    setToken(token);
+  const setAuth = ({ accessToken, username }: Login) => {
+    setAccessToken(accessToken);
     setUsername(username);
-    localStorage.setItem("token", token);
+    localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("username", username);
   };
 
@@ -45,13 +45,13 @@ const AuthProvider = ({ children }: Properties) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     })
       .then(() => {
-        setToken(undefined);
+        setAccessToken(undefined);
         setUsername(undefined);
-        localStorage.removeItem("token");
+        localStorage.removeItem("accessToken");
         localStorage.removeItem("username");
       })
       .catch(() => {});
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }: Properties) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, username, setAuth, logout, isLoading }}
+      value={{ accessToken, username, setAuth, logout, isLoading }}
     >
       {children}
     </AuthContext.Provider>

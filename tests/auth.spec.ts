@@ -15,11 +15,13 @@ test.describe("Authentication Flow", () => {
     await page.click('button[type="submit"]');
 
     //Wait for localStorage
-    await page.waitForFunction(() => !!localStorage.getItem("token"));
+    await page.waitForFunction(() => !!localStorage.getItem("accessToken"));
     await page.waitForFunction(() => !!localStorage.getItem("username"));
 
     // Check LocalStorage
-    const localToken = await page.evaluate(() => localStorage.getItem("token"));
+    const localToken = await page.evaluate(() =>
+      localStorage.getItem("accessToken")
+    );
     const localUsername = await page.evaluate(() =>
       localStorage.getItem("username")
     );
@@ -79,7 +81,7 @@ test.describe("Authentication Flow", () => {
 
         // Check session clean & redirection
         await expect(
-          page.evaluate(() => localStorage.getItem("token"))
+          page.evaluate(() => localStorage.getItem("accessToken"))
         ).toBeNull();
         await expect(
           page.evaluate(() => localStorage.getItem("username"))

@@ -13,8 +13,8 @@ interface Properties<RequestType> {
   options?: Options<RequestType>;
 }
 
-export const usefetchJson = <RequestType, ResponseType>() => {
-  const { token } = useAuth();
+const usefetchJson = <ResponseType, RequestType = void>() => {
+  const { accessToken } = useAuth();
 
   const fetchJson = async ({
     url,
@@ -26,7 +26,7 @@ export const usefetchJson = <RequestType, ResponseType>() => {
       method,
       headers: {
         "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
       },
       body: body ? JSON.stringify(body) : undefined,
     });

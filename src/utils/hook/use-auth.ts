@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthContext } from "../../components/atoms/providers/auth-provider";
+import { AuthContext } from "@atoms/providers/auth-provider";
 
 const useAuth = () => {
   const context = React.useContext(AuthContext);
