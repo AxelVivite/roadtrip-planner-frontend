@@ -11,6 +11,12 @@
         "open-main-menu": "Ouvrir le menu principal"
       }
     },
+    "complete-pagination": {
+      "previous": "Précédent",
+      "aria-previous": "Allez à la page précédente",
+      "next": "Suivant",
+      "aria-next": "Allez à la page suivante"
+    },
     "navbar": {
       "global": "Globale"
     }
