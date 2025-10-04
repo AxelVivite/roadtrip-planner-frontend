@@ -3,14 +3,11 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import { toast } from "sonner";
-import { IconPlus } from "@tabler/icons-react";
 
-import { Button } from "@atoms/shadcn/button";
-import { Card, CardFooter, CardHeader, CardTitle } from "@atoms/shadcn/card";
 import CompletePagination from "@molecules/complete-pagination";
 import SearchBar from "@molecules/search-bar";
+import CardCountry from "@organisms/card-country";
 import pageSizeOptions from "@config/page-size-options";
 import FetchError from "@config/interfaces/fetch-error";
 import Countries, { Country } from "@config/interfaces/in/countries";
@@ -76,19 +73,7 @@ export default function Home() {
         ></SearchBar>
         <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {data.map((country) => (
-            <Link href={`/detailed/${country.cca3}`} key={country.cca3}>
-              <Card className="flex flex-col justify-between h-full">
-                <CardHeader>
-                  <CardTitle>{`${country.flag} ${country.name.common}`}</CardTitle>
-                </CardHeader>
-                <CardFooter>
-                  <Button variant="outline" className="ml-auto">
-                    <IconPlus />
-                    {tCountries("add-to-roadtrip")}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </Link>
+            <CardCountry country={country} />
           ))}
         </div>
       </div>
