@@ -19,6 +19,11 @@
     },
     "navbar": {
       "global": "Globale"
+    },
+    "search-bar": {
+      "search-button": "Rechercher",
+      "search-placeholder": "Recherche...",
+      "select-page-size": "Nombre de résultats par page"
     }
   },
   "organisms": {
@@ -39,6 +44,21 @@
   "pages": {
     "login": {
       "sign-in-to-your-account": "Connectez vous à votre compte"
+    },
+    "countries": {
+      "add-to-roadtrip": "Roadtrip",
+      "400": {
+        "title": "Paramètres invalides",
+        "description": "Les paramètres sont invalides, manquants ou ambigus."
+      },
+      "404": {
+        "title": "Pays introuvable",
+        "description": "Aucun pays correspondant n'a été trouvé."
+      },
+      "500": {
+        "title": "Échec de la récupération",
+        "description": "Impossible de récupérer les informations du pays."
+      }
     }
   },
   "config": {

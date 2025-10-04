@@ -33,7 +33,10 @@ export default function Navbar({ navbarLinks }: Properties) {
                 className={navigationMenuTriggerStyle()}
                 active={isActive}
               >
-                <Link href={link.href} className={isActive ? "bg-muted" : ""}>
+                <Link
+                  href={link.href}
+                  className={isActive ? "bg-muted" : "bg-primary-foreground"}
+                >
                   {t(`config.navbar.${link.id}`)}
                 </Link>
               </NavigationMenuLink>

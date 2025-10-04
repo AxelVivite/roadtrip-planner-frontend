@@ -14,7 +14,7 @@ export default function Header() {
   const t = useTranslations("");
 
   return (
-    <header className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border-t-0 border-2 border-secondary rounded-b-xl">
+    <header className="sticky top-0 bg-primary-foreground h-16 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border-t-0 border-2 border-secondary rounded-b-xl">
       <div className="flex h-16 items-center justify-between">
         <Link href="/">
           <span className="sr-only">{t("website-name")}</span>

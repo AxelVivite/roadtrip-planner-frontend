@@ -12,13 +12,13 @@ interface Properties {
 
 export default async function RootLayout({ children }: Properties) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <body cz-shortcut-listen="true">
+    <html lang="fr" suppressHydrationWarning className="min-h-screen">
+      <body cz-shortcut-listen="true" className="min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider>
             <AuthProvider>
               <Header />
-              <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <main className="min-h-[calc(100vh-4rem)] mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
                 {children}
               </main>
               <Toaster position="top-center" />

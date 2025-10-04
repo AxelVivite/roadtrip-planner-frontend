@@ -1,30 +1,32 @@
 interface Properties {
   page: number;
   totalPages: number;
-  windowSize?: number;
+  maxVisible?: number;
 }
 
 function getPagination({
   page,
   totalPages,
-  windowSize = 3,
+  maxVisible = 5,
 }: Properties): (string | number)[] {
-  const delta = (windowSize - 1) / 2;
-  const range = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    if (
-      i === 1 ||
-      i === totalPages ||
-      (i >= page - delta && i <= page + delta)
-    ) {
-      range.push(i);
-    } else if (range[range.length - 1] !== "...") {
-      range.push("...");
-    }
+  if (totalPages <= maxVisible) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
-  return range;
+  let start = Math.max(page - 1, 2);
+  let end = Math.min(page + 1, totalPages - 1);
+
+  if (page === 1 || page === 2) {
+    start = 2;
+    end = 4;
+  } else if (page === totalPages || page === totalPages - 1) {
+    start = totalPages - 3;
+    end = totalPages - 1;
+  }
+
+  const middle = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+  return [1, ...middle, totalPages];
 }
 
 export default getPagination;
