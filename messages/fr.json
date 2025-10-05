@@ -17,6 +17,18 @@
           "title": "Pays déjà dans votre planning",
           "description": "Ce pays fait déjà partie de votre roadtrip, vous ne pouvez pas l'ajouter deux fois."
         }
+      },
+      "remove-country-from-roadtrip": {
+        "button": "Roadtrip",
+        "aria-button": "Retirer du roadtrip",
+        "success": {
+          "title": "Pays retiré avec succès",
+          "description": "Le pays a bien été retiré de votre planning de roadtrip."
+        },
+        "404": {
+          "title": "Code pays inexistant",
+          "description": "Le code CCA3 fourni ne correspond à aucun pays reconnu. Vérifiez et réessayez."
+        }
       }
     }
   },
