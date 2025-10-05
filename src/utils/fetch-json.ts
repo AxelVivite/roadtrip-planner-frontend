@@ -13,13 +13,13 @@ interface Properties<RequestType> {
   options?: Options<RequestType>;
 }
 
-const usefetchJson = <ResponseType, RequestType = void>() => {
+const useFetchJson = <RequestType = void, ResponseType = undefined>() => {
   const { accessToken } = useAuth();
 
   const fetchJson = async ({
     url,
     options,
-  }: Properties<RequestType>): Promise<ResponseType> => {
+  }: Properties<RequestType>): Promise<ResponseType | undefined> => {
     const { method = "GET", body } = options || {};
 
     const res = await fetch(url, {
@@ -43,11 +43,15 @@ const usefetchJson = <ResponseType, RequestType = void>() => {
       throw fetchError;
     }
 
-    const data: ResponseType = await res.json();
-    return data;
+    try {
+      const data: ResponseType = await res.json();
+      return data;
+    } catch {
+      return undefined;
+    }
   };
 
   return fetchJson;
 };
 
-export default usefetchJson;
+export default useFetchJson;

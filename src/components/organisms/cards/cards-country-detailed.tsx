@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { IconPlus } from "@tabler/icons-react";
 
 import {
   Card,
@@ -9,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@atoms/shadcn/card";
-import { Button } from "@atoms/shadcn/button";
 import { Country } from "@config/interfaces/in/countries";
+import AddCountryToRoadtrip from "@atoms/buttons/add-country-to-roadtrip";
 
 interface Properties {
   country: Country;
@@ -73,10 +72,13 @@ export default function CardCountryDetailed({ country }: Properties) {
           </ul>
         </CardContent>
         <CardFooter className="sm:p-0">
-          <Button className="sm:absolute top-0 right-0 sm:m-6">
-            <IconPlus />
-            {tDetailed("add-to-roadtrip")}
-          </Button>
+          <AddCountryToRoadtrip
+            cca3={country.cca3}
+            button={{
+              variant: "default",
+              className: "sm:absolute top-0 right-0 sm:m-6",
+            }}
+          />
         </CardFooter>
       </Card>
     </div>

@@ -5,6 +5,7 @@ import { IconPlus } from "@tabler/icons-react";
 import { Card, CardFooter, CardHeader, CardTitle } from "@atoms/shadcn/card";
 import { Button } from "@atoms/shadcn/button";
 import { Country } from "@config/interfaces/in/countries";
+import AddCountryToRoadtrip from "@/components/atoms/buttons/add-country-to-roadtrip";
 
 interface Properties {
   country: Country;
@@ -20,10 +21,7 @@ export default function CardCountry({ country }: Properties) {
           <CardTitle>{`${country.flag} ${country.name.common}`}</CardTitle>
         </CardHeader>
         <CardFooter>
-          <Button variant="outline" className="ml-auto">
-            <IconPlus />
-            {tCardCountry("add-to-roadtrip")}
-          </Button>
+          <AddCountryToRoadtrip cca3={country.cca3}/>
         </CardFooter>
       </Card>
     </Link>

@@ -1,5 +1,25 @@
 {
   "website-name": "Roadtrip planner",
+  "atoms": {
+    "buttons": {
+      "add-country-to-roadtrip": {
+        "button": "Roadtrip",
+        "aria-button": "Ajouter au roadtrip",
+        "success": {
+          "title": "Pays ajouté avec succès",
+          "description": "Le pays a bien été ajouté à votre planning de roadtrip."
+        },
+        "400": {
+          "title": "Code pays invalide",
+          "description": "Le code CCA3 fourni ne correspond à aucun pays reconnu. Vérifiez et réessayez."
+        },
+        "409": {
+          "title": "Pays déjà dans votre planning",
+          "description": "Ce pays fait déjà partie de votre roadtrip, vous ne pouvez pas l'ajouter deux fois."
+        }
+      }
+    }
+  },
   "molecules": {
     "menu": {
       "avatar-menu": {

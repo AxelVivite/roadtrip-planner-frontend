@@ -18,8 +18,8 @@ type PageParams = {
 
 export default function CountryDetailedPage() {
   const tDetailed = useTranslations("pages.detailed");
-  const fetchCountry = useFetchJson<Country>();
-  const fetchNeighbors = useFetchJson<Country[]>();
+  const fetchCountry = useFetchJson<void, Country>();
+  const fetchNeighbors = useFetchJson<void, Country[]>();
   const params = useParams<PageParams>();
   const [data, setData] = React.useState<Country | "NotFound">();
   const [neighbors, setNeighbors] = React.useState<Country[]>();
@@ -30,7 +30,7 @@ export default function CountryDetailedPage() {
     })
       .then((response) => {
         setData(response);
-        if (response.borders.length > 0) {
+        if (response && response.borders.length > 0) {
           getNeighbors(response.borders.join(","));
         }
       })

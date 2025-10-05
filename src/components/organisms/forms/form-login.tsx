@@ -19,7 +19,7 @@ import usefetchJson from "@utils/fetch-json";
 export default function FormLogin() {
   const router = useRouter();
   const { setAuth } = useAuth();
-  const fetchJson = usefetchJson<Login, FormLoginOut>();
+  const fetchJson = usefetchJson<FormLoginOut, Login>();
   const tLogin = useTranslations("organisms.forms.login");
   const tErrorsZod = useTranslations("errors.zod");
 
@@ -52,8 +52,10 @@ export default function FormLogin() {
       options: { method: "POST", body: values },
     })
       .then((data) => {
-        setAuth(data);
-        router.push("/");
+        if (data) {
+          setAuth(data);
+          router.push("/");
+        }
       })
       .catch((error: FetchError) => {
         if (error.status === 401) {

@@ -21,7 +21,7 @@ type PageParams = {
 };
 
 export default function Home() {
-  const fetchJson = useFetchJson<Countries>();
+  const fetchJson = useFetchJson<void, Countries>();
   const tCountries = useTranslations("pages.countries");
   const params = useParams<PageParams>();
   const [page, setPage] = useState<number>(
@@ -47,8 +47,10 @@ export default function Home() {
       ),
     })
       .then((response) => {
-        setData(response.data);
-        setTotalPages(response.totalPages);
+        if (response) {
+          setData(response.data);
+          setTotalPages(response.totalPages);
+        }
       })
       .catch((error: FetchError) => {
         if (
