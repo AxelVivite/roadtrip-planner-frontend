@@ -1,6 +1,13 @@
 "use client";
 
-import { FieldValues, Control, Path } from "react-hook-form";
+import {
+  FieldValues,
+  Control,
+  Path,
+  ControllerRenderProps,
+  ControllerFieldState,
+  UseFormStateReturn,
+} from "react-hook-form";
 
 import {
   FormControl,
@@ -14,9 +21,18 @@ import { cn } from "@utils/cn";
 
 interface Properties<FormInputs extends FieldValues> {
   formControl: Control<FormInputs>;
-  input: React.ComponentProps<"input">;
+  input?: React.ComponentProps<"input">;
   name: Path<FormInputs>;
-  label: string;
+  label?: string;
+  render?: ({
+    field,
+    fieldState,
+    formState,
+  }: {
+    field: ControllerRenderProps<FormInputs, Path<FormInputs>>;
+    fieldState: ControllerFieldState;
+    formState: UseFormStateReturn<FormInputs>;
+  }) => React.ReactElement;
 }
 
 export default function FormField<FormInputs extends FieldValues>({
@@ -24,24 +40,29 @@ export default function FormField<FormInputs extends FieldValues>({
   input,
   name,
   label,
+  render,
 }: Properties<FormInputs>) {
   return (
     <FormFieldShadcn
       control={formControl}
       name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
-          <FormControl>
-            <Input
-              {...input}
-              {...field}
-              className={cn("mt-2", input.className)}
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
+      render={
+        render
+          ? render
+          : ({ field }) => (
+              <FormItem>
+                <FormLabel>{label}</FormLabel>
+                <FormControl>
+                  <Input
+                    {...input}
+                    {...field}
+                    className={cn("mt-2", input?.className)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )
+      }
     />
   );
 }

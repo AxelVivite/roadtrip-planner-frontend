@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import CardCountryPlanning from "@organisms/cards/card-country-planning";
+import FormPlanning from "@organisms/forms/form-planning";
 import FetchError from "@config/interfaces/fetch-error";
 import { Country } from "@config/interfaces/in/countries";
 import RoadtripCountries from "@config/interfaces/in/roadtrip-countries";
@@ -75,7 +76,7 @@ export default function Planning() {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <div></div>
+      <FormPlanning countries={data} />
       <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((country, index) => (
           <CardCountryPlanning

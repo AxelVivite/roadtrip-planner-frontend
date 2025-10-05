@@ -26,16 +26,16 @@ export default function FormLogin() {
   const formSchema = z.object({
     username: z
       .string()
-      .min(1, { message: tErrorsZod("emailRequired") })
-      .pipe(z.email({ message: tErrorsZod("emailInvalid") })),
+      .min(1, { message: tErrorsZod("email-required") })
+      .pipe(z.email({ message: tErrorsZod("email-invalid") })),
     password: z
       .string()
-      .min(8, { message: tErrorsZod("passwordMin") })
-      .max(64, { message: tErrorsZod("passwordMax") })
-      .regex(/[A-Z]/, { message: tErrorsZod("passwordUpper") })
-      .regex(/[a-z]/, { message: tErrorsZod("passwordLower") })
-      .regex(/[0-9]/, { message: tErrorsZod("passwordNumber") })
-      .regex(/[^A-Za-z0-9]/, { message: tErrorsZod("passwordSpecial") }),
+      .min(8, { message: tErrorsZod("password-min") })
+      .max(64, { message: tErrorsZod("password-max") })
+      .regex(/[A-Z]/, { message: tErrorsZod("password-upper") })
+      .regex(/[a-z]/, { message: tErrorsZod("password-lower") })
+      .regex(/[0-9]/, { message: tErrorsZod("password-number") })
+      .regex(/[^A-Za-z0-9]/, { message: tErrorsZod("password-special") }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,8 +59,8 @@ export default function FormLogin() {
       })
       .catch((error: FetchError) => {
         if (error.status === 401) {
-          toast.error(tLogin(`401.title`), {
-            description: tLogin(`401.description`),
+          toast.error(tLogin("401.title"), {
+            description: tLogin("401.description"),
           });
         }
       });
