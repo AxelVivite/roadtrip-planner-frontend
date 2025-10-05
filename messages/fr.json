@@ -113,6 +113,7 @@
       "sign-in-to-your-account": "Connectez vous à votre compte"
     },
     "countries": {
+      "title": "Liste des pays",
       "400": {
         "title": "Paramètres invalides",
         "description": "Les paramètres sont invalides, manquants ou ambigus."
@@ -127,6 +128,22 @@
       }
     },
     "detailed": {
+      "title": "Détails du pays",
+      "400": {
+        "title": "Paramètres invalides",
+        "description": "Le ou les paramètres sont invalides, manquants ou ambigus."
+      },
+      "404": {
+        "title": "Pays introuvable",
+        "description": "Aucun pays correspondant n'a été trouvé."
+      },
+      "500": {
+        "title": "Échec de la récupération",
+        "description": "Impossible de récupérer les informations du ou des pays par code."
+      }
+    },
+    "planning": {
+      "title": "Planning du roadtrip",
       "400": {
         "title": "Paramètres invalides",
         "description": "Le ou les paramètres sont invalides, manquants ou ambigus."

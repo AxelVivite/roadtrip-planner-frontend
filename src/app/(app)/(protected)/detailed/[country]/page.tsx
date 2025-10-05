@@ -5,6 +5,8 @@ import { notFound, useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
+import { Separator } from "@atoms/shadcn/separator";
+import TypographyH1 from "@atoms/typography/typographyH1";
 import CardCountryDetailed from "@organisms/cards/cards-country-detailed";
 import CardNeighbors from "@organisms/cards/card-neighbors";
 import { Country } from "@config/interfaces/in/countries";
@@ -68,11 +70,13 @@ export default function CountryDetailedPage() {
   if (data === "NotFound") return notFound();
 
   return (
-    <div className="flex flex-col gap-4">
-      <CardCountryDetailed country={data} />
-      {neighbors && (
-        <CardNeighbors neighbors={neighbors} />
-      )}
+    <div className="flex flex-col gap-6">
+      <TypographyH1 className="mr-auto">{tDetailed("title")}</TypographyH1>
+      <Separator />
+      <div className="flex flex-col gap-4">
+        <CardCountryDetailed country={data} />
+        {neighbors && <CardNeighbors neighbors={neighbors} />}
+      </div>
     </div>
   );
 }

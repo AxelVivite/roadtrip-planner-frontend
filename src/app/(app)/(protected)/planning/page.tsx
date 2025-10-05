@@ -4,6 +4,8 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
+import TypographyH1 from "@atoms/typography/typographyH1";
+import { Separator } from "@atoms/shadcn/separator";
 import CardCountryPlanning from "@organisms/cards/card-country-planning";
 import FormPlanning from "@organisms/forms/form-planning";
 import FetchError from "@config/interfaces/fetch-error";
@@ -15,7 +17,7 @@ import useFetchJson from "@utils/fetch-json";
 export default function Planning() {
   const fetchRoadtripCountries = useFetchJson<void, RoadtripCountries>();
   const fetchDetailedCountries = useFetchJson<void, Country[]>();
-  const tCountries = useTranslations("pages.countries");
+  const tPlanning = useTranslations("pages.planning");
   const [data, setData] = React.useState<Country[]>([]);
 
   React.useEffect(() => {
@@ -38,8 +40,8 @@ export default function Planning() {
           error.status === 404 ||
           error.status === 500
         ) {
-          toast.error(tCountries(`${error.status}.title`), {
-            description: tCountries(`${error.status}.description`),
+          toast.error(tPlanning(`${error.status}.title`), {
+            description: tPlanning(`${error.status}.description`),
           });
         }
       });
@@ -68,24 +70,34 @@ export default function Planning() {
         }
       })
       .catch((error: FetchError) => {
-        toast.error(tCountries(`${error.status}.title`), {
-          description: tCountries(`${error.status}.description`),
-        });
+        if (
+          error.status === 400 ||
+          error.status === 404 ||
+          error.status === 500
+        ) {
+          toast.error(tPlanning(`${error.status}.title`), {
+            description: tPlanning(`${error.status}.description`),
+          });
+        }
       });
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center">
-      <FormPlanning countries={data} />
-      <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {data.map((country, index) => (
-          <CardCountryPlanning
-            country={country}
-            key={country.cca3}
-            setCountries={setData}
-            order={index + 1}
-          />
-        ))}
+    <div className="flex flex-col gap-6">
+      <TypographyH1 className="mr-auto">{tPlanning("title")}</TypographyH1>
+      <Separator />
+      <div className="flex flex-col gap-4 items-center">
+        <FormPlanning countries={data} />
+        <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {data.map((country, index) => (
+            <CardCountryPlanning
+              country={country}
+              key={country.cca3}
+              setCountries={setData}
+              order={index + 1}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
