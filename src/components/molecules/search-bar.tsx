@@ -46,7 +46,7 @@ export default function SearchBar({
         <Input
           type="text"
           placeholder={tSearchBar("search-placeholder")}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(event) => setSearchValue(event.target.value)}
         />
         <Button type="submit" variant="outline" onClick={handleNameChange}>
           {tSearchBar("search-button")}

@@ -8,9 +8,9 @@ function getPagination({
   page,
   totalPages,
   maxVisible = 5,
-}: Properties): (string | number)[] {
+}: Properties): (number)[] {
   if (totalPages <= maxVisible) {
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
   }
 
   let start = Math.max(page - 1, 2);
@@ -24,7 +24,7 @@ function getPagination({
     end = totalPages - 1;
   }
 
-  const middle = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  const middle = Array.from({ length: end - start + 1 }, (_, index) => start + index);
 
   return [1, ...middle, totalPages];
 }

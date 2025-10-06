@@ -25,10 +25,10 @@ export default function FormPlanning({ countries }: Properties) {
   const tErrorsZod = useTranslations("errors.zod");
 
   const formSchema = z.object({
-    startDate: z.date().refine((val) => !isNaN(val.getTime()), {
+    startDate: z.date().refine((value) => !Number.isNaN(value.getTime()), {
       message: tErrorsZod("date-required"),
     }),
-    endDate: z.date().refine((val) => !isNaN(val.getTime()), {
+    endDate: z.date().refine((value) => !Number.isNaN(value.getTime()), {
       message: tErrorsZod("date-required"),
     }),
   });

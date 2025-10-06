@@ -19,6 +19,12 @@ import {
 import { Input } from "@atoms/shadcn/input";
 import { cn } from "@utils/cn";
 
+type RenderProperties<FormInputs extends FieldValues> = {
+  field: ControllerRenderProps<FormInputs, Path<FormInputs>>;
+  fieldState: ControllerFieldState;
+  formState: UseFormStateReturn<FormInputs>;
+};
+
 interface Properties<FormInputs extends FieldValues> {
   formControl: Control<FormInputs>;
   input?: React.ComponentProps<"input">;
@@ -28,11 +34,7 @@ interface Properties<FormInputs extends FieldValues> {
     field,
     fieldState,
     formState,
-  }: {
-    field: ControllerRenderProps<FormInputs, Path<FormInputs>>;
-    fieldState: ControllerFieldState;
-    formState: UseFormStateReturn<FormInputs>;
-  }) => React.ReactElement;
+  }: RenderProperties<FormInputs>) => React.ReactElement;
 }
 
 export default function FormField<FormInputs extends FieldValues>({
@@ -42,27 +44,21 @@ export default function FormField<FormInputs extends FieldValues>({
   label,
   render,
 }: Properties<FormInputs>) {
+  const inputRender = ({ field }: RenderProperties<FormInputs>) => (
+    <FormItem>
+      <FormLabel>{label}</FormLabel>
+      <FormControl>
+        <Input {...input} {...field} className={cn("mt-2", input?.className)} />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  );
+
   return (
     <FormFieldShadcn
       control={formControl}
       name={name}
-      render={
-        render
-          ? render
-          : ({ field }) => (
-              <FormItem>
-                <FormLabel>{label}</FormLabel>
-                <FormControl>
-                  <Input
-                    {...input}
-                    {...field}
-                    className={cn("mt-2", input?.className)}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )
-      }
+      render={render ?? inputRender}
     />
   );
 }

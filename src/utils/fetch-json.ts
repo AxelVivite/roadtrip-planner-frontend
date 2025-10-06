@@ -22,7 +22,7 @@ const useFetchJson = <RequestType = void, ResponseType = undefined>() => {
   }: Properties<RequestType>): Promise<ResponseType | undefined> => {
     const { method = "GET", body } = options || {};
 
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       method,
       headers: {
         "Content-Type": "application/json",
@@ -31,20 +31,20 @@ const useFetchJson = <RequestType = void, ResponseType = undefined>() => {
       body: body ? JSON.stringify(body) : undefined,
     });
 
-    if (!res.ok) {
-      const errData = (await res
+    if (!response.ok) {
+      const errorData = (await response
         .json()
         .catch(() => ({}))) as Partial<FetchError>;
       const fetchError: FetchError = {
-        status: res.status,
-        statusText: res.statusText,
-        message: errData.message || `Fetch error: ${res.status}`,
+        status: response.status,
+        statusText: response.statusText,
+        message: errorData.message || `Fetch error: ${response.status}`,
       };
       throw fetchError;
     }
 
     try {
-      const data: ResponseType = await res.json();
+      const data: ResponseType = await response.json();
       return data;
     } catch {
       return undefined;

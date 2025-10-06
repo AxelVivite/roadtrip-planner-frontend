@@ -1,18 +1,18 @@
-interface UrlParams {
+interface UrlParameters {
   [key: string]: string | number | undefined;
 }
 
-export const buildUrl = (base: string, params?: UrlParams): string => {
-  if (!params) return base;
+export const buildUrl = (base: string, parameters?: UrlParameters): string => {
+  if (!parameters) return base;
 
-  const searchParams = new URLSearchParams();
+  const searchParameters = new URLSearchParams();
 
-  Object.entries(params).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(parameters)) {
     if (value) {
-      searchParams.append(key, String(value));
+      searchParameters.append(key, String(value));
     }
-  });
+  }
 
-  const queryString = searchParams.toString();
+  const queryString = searchParameters.toString();
   return queryString ? `${base}?${queryString}` : base;
 };

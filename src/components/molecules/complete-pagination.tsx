@@ -25,13 +25,13 @@ export default function CompletePagination({
 
   const previousPage = () => {
     if (page > 1) {
-      setPage((prev) => prev - 1);
+      setPage((previous) => previous - 1);
     }
   };
 
   const nextPage = () => {
     if (page < totalPages) {
-      setPage((prev) => prev + 1);
+      setPage((previous) => previous + 1);
     }
   };
 

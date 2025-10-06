@@ -33,7 +33,7 @@ export default function RemoveCountryFromRoadtrip({
       options: { method: "DELETE" },
     })
       .then(() => {
-        setCountries((prev) => prev.filter((country) => country.cca3 !== cca3))
+        setCountries((previous) => previous.filter((country) => country.cca3 !== cca3))
         toast(tRemoveRoadTrip("success.title"), {
           description: tRemoveRoadTrip("success.description"),
         });

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { Separator } from "@atoms/shadcn/separator";
-import TypographyH1 from "@atoms/typography/typographyH1";
+import TypographyH1 from "@atoms/typography/typography-h1";
 import CardCountryDetailed from "@organisms/cards/cards-country-detailed";
 import CardNeighbors from "@organisms/cards/card-neighbors";
 import { Country } from "@config/interfaces/in/countries";
@@ -14,7 +14,7 @@ import FetchError from "@config/interfaces/fetch-error";
 import useFetchJson from "@utils/fetch-json";
 import { buildUrl } from "@utils/build-url";
 
-type PageParams = {
+type PageParameters = {
   country: string;
 };
 
@@ -22,13 +22,13 @@ export default function CountryDetailedPage() {
   const tDetailed = useTranslations("pages.detailed");
   const fetchCountry = useFetchJson<void, Country>();
   const fetchNeighbors = useFetchJson<void, Country[]>();
-  const params = useParams<PageParams>();
+  const parameters = useParams<PageParameters>();
   const [data, setData] = React.useState<Country | "NotFound">();
   const [neighbors, setNeighbors] = React.useState<Country[]>();
 
   React.useEffect(() => {
     fetchCountry({
-      url: `${process.env.NEXT_PUBLIC_API_URL}/api/countries/codes/${params.country}`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/api/countries/codes/${parameters.country}`,
     })
       .then((response) => {
         setData(response);
@@ -42,6 +42,7 @@ export default function CountryDetailedPage() {
           setData("NotFound");
         }
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getNeighbors = (codes: string) => {

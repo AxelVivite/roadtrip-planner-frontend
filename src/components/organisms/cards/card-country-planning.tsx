@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
 import { Card, CardFooter, CardHeader, CardTitle } from "@atoms/shadcn/card";
 import RemoveCountryFromRoadtrip from "@atoms/buttons/remove-country-from-roadtrip";

@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [accessToken, isLoading, router]);
 
   if (!accessToken) {
-    return null;
+    return;
   }
 
   return <>{children}</>;

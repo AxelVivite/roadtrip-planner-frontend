@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
-import TypographyH1 from "@atoms/typography/typographyH1";
+import TypographyH1 from "@atoms/typography/typography-h1";
 import { Separator } from "@atoms/shadcn/separator";
 import CardCountryPlanning from "@organisms/cards/card-country-planning";
 import FormPlanning from "@organisms/forms/form-planning";
@@ -25,13 +25,11 @@ export default function Planning() {
       url: `${process.env.NEXT_PUBLIC_API_URL}/api/roadtrip/countries`,
     })
       .then((response) => {
-        if (response) {
-          if (response && response.length > 0) {
-            getDetailedCountries(
-              response.map((country) => country.cca3).join(","),
-              response
-            );
-          }
+        if (response && response && response.length > 0) {
+          getDetailedCountries(
+            response.map((country) => country.cca3).join(","),
+            response
+          );
         }
       })
       .catch((error: FetchError) => {
@@ -45,6 +43,7 @@ export default function Planning() {
           });
         }
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getDetailedCountries = (
@@ -61,7 +60,7 @@ export default function Planning() {
           const orderMap = new Map(
             rawCountries.map((item) => [item.cca3, item.order])
           );
-          const sortedCountries = response.sort(
+          const sortedCountries = response.toSorted(
             (a, b) =>
               (orderMap.get(a.cca3) ?? Infinity) -
               (orderMap.get(b.cca3) ?? Infinity)

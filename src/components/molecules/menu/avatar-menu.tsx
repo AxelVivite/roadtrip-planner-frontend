@@ -14,7 +14,7 @@ import {
 import { Avatar, AvatarFallback } from "@atoms/shadcn/avatar";
 import useAuth from "@utils/hook/use-auth";
 
-export default function AvatarMenu({}) {
+export default function AvatarMenu() {
   const { username, logout } = useAuth();
   const { theme, setTheme, systemTheme } = useTheme();
   const tAvatarMenu = useTranslations("molecules.menu.avatar-menu");
